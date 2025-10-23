@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uzamknutá stránka</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #unlock, #content {
+      text-align: center;
+    }
+    input {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      text-align: center;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00aaff;
+      color: white;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0088cc;
+    }
+    img {
+      width: 300px;
+      margin: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div id="unlock">
+    <h2>Zadaj odomykací kód</h2>
+    <input type="password" id="codeInput" placeholder="Zadaj kód">
+    <br>
+    <button onclick="checkCode()">Odomknúť</button>
+    <p id="error" style="color: red;"></p>
+  </div>
+
+  <div id="content" style="display:none;">
+    <h2>📸 Tvoje fotky</h2>
+    <img src="photo1.jpg" alt="Fotka 1">
+    <img src="photo2.jpg" alt="Fotka 2">
+    <img src="photo3.jpg" alt="Fotka 3">
+  </div>
+
+  <script>
+    const correctCode = "1234"; // 🔑 Tu si zmeň kód
+
+    function checkCode() {
+      const userCode = document.getElementById("codeInput").value;
+      const error = document.getElementById("error");
+      if (userCode === correctCode) {
+        document.getElementById("unlock").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        error.textContent = "Nesprávny kód. Skús znova.";
+      }
+    }
+  </script>
+</body>
+</html>
